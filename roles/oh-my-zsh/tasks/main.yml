@@ -1,0 +1,22 @@
+- name: Install git and zsh
+  become: True
+  become_user: root
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+      - git
+      - git-core
+      - zsh 
+      - zsh-doc
+      - powerline
+
+- name: Change default shell for user to zsh
+  become: True
+  become_user: root
+  user:
+    name: "{{ local_username }}"
+    shell: /bin/zsh
+   

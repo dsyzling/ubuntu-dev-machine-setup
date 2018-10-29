@@ -1,0 +1,19 @@
+- name: Install gnu stow to manage dotfiles
+  become: True
+  become_user: root
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - stow
+
+
+# TODO checkout dotfiles into home directory
+
+- name: Run stow script to install dotfiles
+  shell: ./install-all.sh
+  args:
+    chdir: /home/{{ local_username }}/dotfiles   
+   
