@@ -1,7 +1,7 @@
 - name: Install gnu stow to manage dotfiles
   become: True
   become_user: root
-  apt:
+  package:
     name: "{{ packages }}"
     state: latest
     update_cache: yes

@@ -1,7 +1,7 @@
 - name: Install git and zsh
   become: True
   become_user: root
-  apt:
+  package:
     name: "{{ packages }}"
     state: present
     update_cache: yes
