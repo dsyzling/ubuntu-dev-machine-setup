@@ -9,8 +9,10 @@
     packages:
       - stow
 
-
-# TODO checkout dotfiles into home directory
+- name: Clone our dotfiles from github
+  git:
+    repo: https://github.com/dsyzling/dotfiles.git
+    dest: ~/dotfiles
 
 - name: Run stow script to install dotfiles
   shell: ./install-all.sh
