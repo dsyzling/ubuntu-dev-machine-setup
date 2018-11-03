@@ -1,4 +1,4 @@
-- import_playbook: oh-my-zsh.yml
-- import_playbook: dotfiles.yml
-
+#- import_playbook: oh-my-zsh.yml
+#- import_playbook: dotfiles.yml
+- import_playbook: core.yml
 
