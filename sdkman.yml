@@ -1,0 +1,32 @@
+- hosts: all
+  vars:
+    sdkman_folder: ~/.sdkman
+    sdkman_script_install_url: http://get.sdkman.io
+    
+  tasks:
+  - name: sdkman requires curl to install
+    package:
+      name: curl
+      state: present
+    become: True
+    
+  - name: Check if sdkman is installed
+    shell: test -d {{sdkman_folder}} && echo "yes" || echo "no"
+    register: is_sdkman_installed
+
+  - name: Download sdkman install script.
+    when: is_sdkman_installed.stdout == "no"
+    get_url:
+      url: "{{sdkman_script_install_url}}"
+      dest: ./sdkman-install.sh
+      mode: +x
+      
+  - name: Install sdkman
+    when: is_sdkman_installed.stdout == "no"
+    shell: ./sdkman-install.sh
+
+  - name: Remove install script
+    file:
+      state: absent
+      path: ./sdkman-install.sh
+  

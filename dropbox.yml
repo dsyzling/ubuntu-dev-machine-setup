@@ -1,0 +1,21 @@
+- hosts: all
+  vars:
+    dropbox_deb_filename: dropbox_2015.10.28_amd64.deb
+    dropbox_deb_url: https://www.dropbox.com/download?dl=packages/ubuntu/
+    
+  tasks:
+  - name: Download dropbox package
+    get_url:
+      url: "{{ dropbox_deb_url }}/{{ dropbox_deb_filename }}"
+      dest: ./
+      
+  - name: Install dropbox package
+    apt:
+     deb: "./{{ dropbox_deb_filename }}"
+    become: True
+
+  - name: Remove downloaded package
+    file:
+      state: absent
+      path: "./{{ dropbox_deb_filename }}"
+  
