@@ -1,0 +1,21 @@
+- name: Install packages for WSL development
+  become: True
+  become_user: dsyzling
+  package:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - stow, emacs-gtk, zsh
+
+- name: Clone our dotfiles from github
+  git:
+    repo: https://github.com/dsyzling/dotfiles.git
+    dest: ~/dotfiles
+
+- name: Run stow script to install dotfiles
+  shell: ./install-wsl.sh
+  args:
+    chdir: /home/{{ local_username }}/dotfiles   
+   
