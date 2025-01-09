@@ -1,13 +1,17 @@
 - name: Install packages for WSL development
   become: True
-  become_user: dsyzling
+  become_user: root
   package:
     name: "{{ packages }}"
     state: latest
     update_cache: yes
   vars:
     packages:
-      - stow, emacs-gtk, zsh
+      - stow
+      - emacs-gtk
+      - zsh
+      - zsh-doc
+      - powerline
 
 - name: Clone our dotfiles from github
   git:
