@@ -86,6 +86,7 @@
     cd ~/dev
     git clone git://git.sv.gnu.org/emacs.git
     cd emacs
+    git checkout emacs-29
     ./autogen.sh
     ./configure --with-native-compilation --with-pgtk --with-modules --with-rsvg --with-tree-sitter
     make -j8
