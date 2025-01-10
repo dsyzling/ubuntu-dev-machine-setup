@@ -9,6 +9,7 @@
     packages:
       - stow
       - emacs-gtk
+      - ispell
       - zsh
       - zsh-doc
       - powerline
@@ -21,5 +22,14 @@
 - name: Run stow script to install dotfiles
   shell: ./install-wsl.sh
   args:
-    chdir: /home/{{ local_username }}/dotfiles   
+    chdir: /home/{{ local_username }}/dotfiles
+    
+- name: Change default shell to ZSH
+  shell: csh /usr/bin/zsh
+  args:
+    chdir: /home/{{ local_username }}
    
+- name: Install uv for Python
+  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+  args:
+    chdir: /home/{{ local_username }}
