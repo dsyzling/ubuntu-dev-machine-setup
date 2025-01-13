@@ -6,8 +6,7 @@ Install some required setup tools.
 git clone https://github.com/dsyzling/ubuntu-dev-machine-setup.git
 
 cd ubuntu-dev-machine-setup
-ansible-playbook site.yml -K
-
+ansible-playbook wsl.yml -K --extra-vars "dssecretspass='password here'"
 
 # Post Installation Emacs initialisation 
 

@@ -94,3 +94,5 @@
     ./configure --with-native-compilation --with-pgtk --with-modules --with-rsvg --with-tree-sitter
     make -j8
     sudo make install
+    cd ~/.emacs.d/personal/modules
+    gpg --batch --passphrase "{{ dssecretspass }}" --output ds-secrets.el -d ds-secrets.el.gpg
