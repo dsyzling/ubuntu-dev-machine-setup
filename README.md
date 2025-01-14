@@ -14,3 +14,6 @@ Running Emacs for the first time will install all our required packages. Fonts n
 
 Run: M-x all-the-icons-install-fonts
 
+Install pyright LSP server for python 
+M-x lsp-install-server 
+select pyright 
