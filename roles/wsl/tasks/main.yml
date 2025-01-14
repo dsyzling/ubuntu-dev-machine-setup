@@ -51,6 +51,7 @@
 
 #
 # Emacs custom build for Wayland and WSL2
+# nodejs and npm required to install pyright from within Emacs.
 #
 - name: Install packages for Custom Emacs Build
   become: True
@@ -84,6 +85,12 @@
       - texlive-fonts-recommended-doc
       - texlive-luatex
       - texlive-xetex
+      - nodejs
+      - npm
+
+- name: Create pyenv directory for use within Emacs
+  shell: |
+    mkdir -p ~/.pyenv/versions
 
 - name: Custom Emacs Build
   shell: |
