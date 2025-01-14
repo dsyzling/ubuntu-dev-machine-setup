@@ -14,6 +14,7 @@
       - zsh-doc
       - powerline
       - wl-clipboard
+      - direnv
 
 - name: Clone our dotfiles from github
   git:
