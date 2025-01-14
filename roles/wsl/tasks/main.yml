@@ -13,6 +13,7 @@
       - zsh
       - zsh-doc
       - powerline
+      - wl-clipboard
 
 - name: Clone our dotfiles from github
   git:
