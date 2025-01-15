@@ -1,3 +1,15 @@
+# Ubuntu cloudinit 
+
+Create a cloudinit setup file and store under your user profile within Windows, e.g. Ubuntu-24.04.user-data.
+
+Then from powershell run:
+Ubuntu-24.04 
+
+See:
+https://documentation.ubuntu.com/wsl/en/latest/tutorials/cloud-init/
+https://cloudinit.readthedocs.io/en/latest/reference/examples.html
+
+
 # Ubuntu Developer Machine Setup With Ansible
 
 Install some required setup tools.
@@ -7,6 +19,8 @@ git clone https://github.com/dsyzling/ubuntu-dev-machine-setup.git
 
 cd ubuntu-dev-machine-setup
 ansible-playbook wsl.yml -K --extra-vars "dssecretspass='password here'"
+Run shell:
+zsh 
 
 # Post Installation Emacs initialisation 
 
