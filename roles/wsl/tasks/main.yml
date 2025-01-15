@@ -41,14 +41,6 @@
     mkdir -p ~/Sync/deft
     mkdir -p ~/Sync/todo
 
-# Issue with WSL and Ubuntu falling back to using X11 rather than Wayland.
-# Wayland will provide the smoother fonts on hidpi displays
-#   https://github.com/microsoft/wslg/issues/1244
-- name: Fix for WSL Ubuntu 24.04 and Wayland
-  shell: ln -sf //mnt/wslg/runtime-dir/wayland-* $XDG_RUNTIME_DIR//
-  args:
-    chdir: /home/{{ local_username }}
-
 #
 # Emacs custom build for Wayland and WSL2
 # nodejs and npm required to install pyright from within Emacs.
