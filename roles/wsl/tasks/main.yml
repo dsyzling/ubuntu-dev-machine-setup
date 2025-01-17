@@ -30,7 +30,12 @@
   shell: sudo chsh -s /usr/bin/zsh dsyzling
   args:
     chdir: /home/{{ local_username }}
-   
+
+- name: Install Starship Prompt
+  shell: curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin -y
+  args:
+    chdir: /home/{{ local_username }}
+
 - name: Install uv for Python
   shell: curl -LsSf https://astral.sh/uv/install.sh | sh
   args:
