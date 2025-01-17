@@ -62,12 +62,14 @@
       - libjpeg-dev
       - libpng-dev
       - libxpm-dev
+      - libxml2-dev
       - libncurses-dev
       - libtiff-dev
       - gnutls-dev
       - imagemagick
       - libtree-sitter-dev
       - libgccjit-13-dev
+      - texlive-full
       - texlive-latex-base
       - texlive-latex-recommended
       - texlive-latex-recommended-doc
@@ -79,6 +81,7 @@
       - texlive-xetex
       - nodejs
       - npm
+      - qtwayland5
 
 - name: Create pyenv directory for use within Emacs
   shell: |
@@ -92,7 +95,7 @@
     cd emacs
     git checkout emacs-30
     ./autogen.sh
-    ./configure --with-native-compilation --with-pgtk --with-modules --with-rsvg --with-tree-sitter
+    ./configure --with-native-compilation --with-pgtk --with-modules --with-rsvg --with-tree-sitter --with-xml2
     make -j8
     sudo make install
     cd ~/.emacs.d/personal/modules
