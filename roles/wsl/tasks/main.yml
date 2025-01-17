@@ -32,7 +32,9 @@
     chdir: /home/{{ local_username }}
 
 - name: Install Starship Prompt
-  shell: curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin -y
+  shell: |
+    mkdir -p ~/.local/bin
+    curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin -y
   args:
     chdir: /home/{{ local_username }}
 
