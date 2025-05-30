@@ -43,11 +43,6 @@
   args:
     chdir: /home/{{ local_username }}
 
-- name: Create template SyncThing directories for Emacs
-  shell: |
-    mkdir -p ~/Sync/deft
-    mkdir -p ~/Sync/todo
-
 - name: Install Firefox
   shell: |
     sudo install -d -m 0755 /etc/apt/keyrings
@@ -117,7 +112,7 @@
     cd ~/dev
     git clone git://git.sv.gnu.org/emacs.git
     cd emacs
-    git checkout emacs-30
+    git checkout emacs-30.1.90
     ./autogen.sh
     ./configure --with-native-compilation --with-pgtk --with-modules --with-rsvg --with-tree-sitter --with-xml2
     make -j8
@@ -133,5 +128,25 @@
     wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.40/quarto-1.6.40-linux-amd64.deb
     sudo dpkg -i quarto-1.6.40-linux-amd64.deb
     rm *.deb
+  args:
+    chdir: /home/{{ local_username }}
+
+#
+# Syncthing
+# Use Stable channel
+#
+- name: Create template SyncThing directories for Emacs
+  shell: |
+    mkdir -p ~/Sync/deft
+    mkdir -p ~/Sync/todo
+
+- name: Install Syncthing
+  shell: |
+    sudo mkdir -p /etc/apt/keyrings
+    sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+    sudo apt-get -y update
+    sudo apt-get -y install syncthing
+
   args:
     chdir: /home/{{ local_username }}
