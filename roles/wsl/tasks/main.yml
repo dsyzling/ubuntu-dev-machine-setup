@@ -101,6 +101,7 @@
       - nodejs
       - npm
       - qtwayland5
+      - libsqlite3-dev
 
 - name: Create pyenv directory for use within Emacs
   shell: |
